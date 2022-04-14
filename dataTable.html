@@ -1,0 +1,234 @@
+<!DOCTYPE htm>
+<html>
+    <head>
+        <title>Hot Plate Lab Data Table</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,100&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="Kelvin.png">
+        <style>
+            body {
+                /*background-image: url(http://images6.fanpop.com/image/photos/41900000/Northern-lights-aurora-borealis-39533089-1920-1080-aurora-borealis-41919235-1920-1080.jpg);*/
+                background-image: url("spaceandtreebackground.jpg");
+            }
+            table {
+                width: 80%;
+                height: 60%;
+                border: 5px groove red;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 20px;
+                
+            }
+            th {
+                height: 40%;
+                border: 1px solid green;
+                width: 20%;
+                color: white;
+            }
+            td {
+                border: 1px solid blue;
+                text-align: center;
+            }
+            h1 {
+                text-align: center;
+                font-family: fantasy, Copperplate;
+                color: white;
+            }
+            h2 {
+                font-family: "Brush Script MT", cursive;
+                color: white;
+                
+            }
+            h3 {
+                font-family: sans-serif;
+                color: white;
+            }
+            p {
+                color: white;
+            }
+            #buttonDiv {
+                text-align: center;
+            }
+            #button {
+                margin-top: 1%;
+                background-color: #00BFFF;
+                color: white;
+                border: 2px solid #1E90FF;
+                text-align: center;
+                font-size: 16px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-radius: 6px;
+                transition-duration: 0.5s;
+            }
+            #button:hover {
+                background-color: white;
+                color:#00BFFF;
+                box-shadow: 0 16px 20px 2 rgba(0,0,0,0.5);
+                
+            }
+            #buttonCool {
+                margin-top: 1%;
+                background-color: red;
+                color: white;
+                border: 2px solid #880808;
+                text-align: center;
+                font-size: 16px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-radius: 6px;
+                transition-duration: 0.5s;
+                display: none;
+            }
+            #buttonCool:hover {
+                background-color: white;
+                color:red;
+                box-shadow: 0 16px 20px 2 rgba(0,0,0,0.5);
+            }
+            /*
+            -Things to add
+            -rainbow colours
+            -cools fonts, (maybe changing fonts)
+            -cool background
+            -bunch of other cool stuff
+            font-family: 'Roboto Mono', monospace;
+            */
+        </style>
+        <link rel="stylesheet" href="stylesheet.css"/>
+    </head>
+    <!-- -->
+    <body id="body">
+        <h1 class="white">Hot Plate Lab Data Table</h1>
+        <h2 class="white">Sample Calculations</h2>
+        <h3 class="white">Adding The Masses of 3 Aluminum Cubes Together</h3>
+        <p class="white">2.49±0.01g + 2.74±0.01g + 2.42±0.01g</p>
+        <p class="white">= 7.65±0.03g / 1000 = 0.00765±0.00003kg</p>
+        <table id="table">
+            <tr>
+                <th>Material</th>
+                <th>Mass of 3 Cubes<br>m/kg<br>Δm=±0.03</th>
+                <th>Material Starting Temperature<br>T/Celsius<br>ΔT=±0.5</th>
+                <th>Water Starting Temperature<br>T/Celsius<br>ΔT=±0.1</th>
+                <th>Water End Temperature<br>T/Celsius<br>ΔT=±0.1</th>
+            </tr>
+            <tr></tr>
+                <td id="aluminum">Aluminum</td>
+                <td>0.00765</td>
+                <td>94.5</td>
+                <td>22.0</td>
+                <td>25.1</td>
+            <tr></tr>
+            <td>Iron</td>
+                <td>0.02312</td>
+                <td>94.5</td>
+                <td>21.9</td>
+                <td>26.7</td>
+                
+            <tr></tr>
+                <td>Copper</td>
+                <td>0.02556</td>
+                <td>94.5</td>
+                <td>22.0</td>
+                <td>25.9</td>
+        </table>
+        <div id="buttonDiv">
+        <button id="button" onclick="boring()">Boring Mode</button>
+            <button id="buttonCool" onclick="cool()">Style Mode</button>
+            </div>
+    </body>
+    <script>
+        
+        
+        let colours = ['red','orange','yellow','green','blue','violet','#C71585','#Fe6c9e','#EC0ED9','#FF01CC','#FF66FF']
+        let fonts = ['Roboto Mono','Verdana','Brush Script M7','Copperplate','Papyrus']
+        let borderStyles = ['dotted','dashed','solid','double','groove','ridge','inset','outset']
+        let background = ["Celestial%20background%20Image.jpg","Beach%20Background.jpg","Mountain%20Background%20image.jpg","northernlightsbackground.jpg","spaceandtreebackground.jpg"]
+        // variables
+        let td = document.getElementsByTagName('td')
+        let th = document.getElementsByTagName('th')
+        let body = document.getElementById('body')
+        let button = document.getElementById('button')
+        let table = document.getElementById('table')
+        let whites = document.getElementsByClassName('white')
+        let buttonCool = document.getElementById('buttonCool')
+        //td.style.color = "red"; doesn't work? try splitting this
+        function changeDataColour() {
+        for (let i =0;i<td.length;i++) {
+            td[i].style.color = colours[Math.floor(Math.random() *9)]
+            td[i].style.borderStyle = borderStyles[Math.floor(Math.random() * 7)]
+            td[i].style.borderColor = colours[Math.floor(Math.random() *9)]
+            td[i].style.borderWidth = Math.random() * 5
+            td[i].style.fontFamily = fonts[Math.floor(Math.random() * 4)]
+            td[i].style.backgroundColor = colours[Math.floor(Math.random() *9)]
+        }
+        
+        }
+        function changeTHFont () {
+            for (let i =0;i<th.length;i++) {
+                th[i].style.fontFamily = fonts[Math.floor(Math.random() * 4)]
+            }
+        }
+        function changeBackground () {
+            body.style.backgroundImage = "url(" + background[Math.floor(Math.random() * 4)] + ")";
+        }
+        function boringMode () {
+            clearInterval(dataInterval)
+            clearInterval(THfontInterval)
+            clearInterval(backgroundInterval)
+            table.style.borderColor = "black";
+            table.style.borderRadius = "0px"
+            body.style.backgroundImage = "none";
+            body.style.backgroundColor = "white";
+            for (let i = 0; i<td.length;i++) {
+                td[i].style.color = 'black'
+                td[i].style.borderStyle = "solid";
+                td[i].style.borderColor = "black";
+                td[i].style.borderWidth = "2px";
+                td[i].style.fontFamily = "sans-serif";
+                td[i].style.backgroundColor = "white"
+            }
+            for (let i = 0;i<th.length;i++) {
+                th[i].style.fontFamily = "sans-serif";
+                th[i].style.color = "black"
+                th[i].style.borderColor = "black";
+            }
+            for (let i=0;i<whites.length;i++) {
+                whites[i].style.color = "black"
+            }
+            button.style.display = "none";
+            buttonCool.style.display = "inline-block"
+            
+        }
+        function boring () {
+            if (window.confirm('Too Distracting Huh?')) {
+                boringMode()
+            }
+        }
+        function cool () {
+            alert('Good Move')
+            button.style.display = "inline-block"
+            buttonCool.style.display = "none"
+            body.style.backgroundImage = "url(Beach%20Background.jpg)"
+            for (let i=0;i<whites.length;i++) {
+                whites[i].style.color = "white"
+            }
+            for (let i = 0;i<th.length;i++) {
+                th[i].style.fontFamily = "sans-serif";
+                th[i].style.color = "white"
+                th[i].style.borderColor = 'green';
+            }
+            dataInterval = setInterval(() => {changeDataColour()},1000)
+            THfontInterval = setInterval(()=> {changeTHFont()},666)
+            backgroundInterval = setInterval(()=> {changeBackground()},8000)
+        }
+         let dataInterval = setInterval(() => {changeDataColour()},1000)
+        let THfontInterval = setInterval(()=> {changeTHFont()},666)
+        let backgroundInterval = setInterval(()=> {changeBackground()},8000)
+
+    </script>
+</html>
